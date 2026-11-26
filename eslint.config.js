@@ -8,7 +8,6 @@ import globals from 'globals';
 export default [
     js.configs.recommended,
 
-    // Блок для TS/TSX файлов (бизнес-код)
     {
         files: ['**/*.{ts,tsx}'],
         languageOptions: {
@@ -42,7 +41,6 @@ export default [
         },
     },
 
-    // Блок для JS-конфигов (Node.js окружение)
     {
         files: ['*.config.js', '*.config.cjs'],
         languageOptions: {
