@@ -1,31 +1,24 @@
-import {configureStore, combineReducers, ThunkDispatch, Action} from '@reduxjs/toolkit';
-import {
-    persistStore,
-    persistReducer,
-    FLUSH,
-    REHYDRATE,
-    PAUSE,
-    PERSIST,
-    PURGE,
-    REGISTER,
-} from 'redux-persist';
+import {Action, combineReducers, configureStore, ThunkDispatch} from '@reduxjs/toolkit';
+import {FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE,} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import {StateSchema, ThunkExtraArg} from "@/app/providers/StoreProvider/config/StateSchema";
 import {basketReducer} from "@/entities/basket";
 import {productListReducer} from "@/widgets/ProductList";
 import {cardProductReducer} from "@/pages/CardProduct";
+import {promoReducer} from "@/entities/promo/model/slice/promoSlice";
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['app', 'basket'],
+    whitelist: ['app', 'basket', 'promo'],
 };
 
 const rootReducer = combineReducers({
     productList: productListReducer,
     cardProduct: cardProductReducer,
     basket: basketReducer,
+    promo: promoReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

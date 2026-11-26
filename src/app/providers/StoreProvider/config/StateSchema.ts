@@ -3,11 +3,13 @@ import {NavigateOptions, To} from "react-router-dom";
 import {ProductListSchema} from "@/widgets/ProductList/model/types/productListSchema";
 import {CardProductSchema} from "@/pages/CardProduct/model/types/cardProductSchema";
 import {BasketSchema} from "@/entities/basket/model/types/basketSchema";
+import {PromoSchema} from "@/entities/promo";
 
 export interface StateSchema {
     productList: ProductListSchema;
     cardProduct: CardProductSchema;
     basket: BasketSchema;
+    promo: PromoSchema
 
 }
 

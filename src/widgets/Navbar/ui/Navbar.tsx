@@ -5,7 +5,7 @@ import BasketIcon from '@/shared/assets/icons/BasketIcon.svg';
 import {Link} from 'react-router-dom';
 import {AppRouter, RoutePath} from '@/shared/config/routeConfig/routeConfig';
 import {useAppSelector} from '@/app/providers/StoreProvider/config';
-import {selectBasketTotalCount, selectBasketTotalPrice,} from '@/entities/basket/model/selectors/basketSelector';
+import {selectBasketTotalCount, selectBasketTotalWithDiscount,} from '@/entities/basket/model/selectors/basketSelector';
 
 export interface NavbarProps {
     className?: string;
@@ -16,7 +16,8 @@ export const Navbar = (props: NavbarProps) => {
     const {className, children} = props;
 
     const totalCount = useAppSelector(selectBasketTotalCount);
-    const totalPrice = useAppSelector(selectBasketTotalPrice);
+    const totalPriceWithDiscount = useAppSelector(selectBasketTotalWithDiscount);
+
 
     return (
         <div className={classNames(cls.navbar, {}, [className])}>
@@ -32,7 +33,11 @@ export const Navbar = (props: NavbarProps) => {
                 {totalCount > 0 && (
                     <>
                         <span className={cls.count}>{totalCount}</span>
-                        <span className={cls.price}>{totalPrice.toFixed(2)} р</span>
+                        <div className={cls.priceBlock}>
+                            <span className={cls.price}>
+                                {totalPriceWithDiscount.toFixed(2)} ₽
+                            </span>
+                        </div>
                     </>
                 )}
             </Link>

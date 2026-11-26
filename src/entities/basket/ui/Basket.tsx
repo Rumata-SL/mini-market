@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from 'react-router-dom';
 
 import cls from './Basket.module.scss';
@@ -10,12 +10,15 @@ import {
     basketActions,
     selectBasketEnrichedItems,
     selectBasketTotalCount,
-    selectBasketTotalPrice
+    selectBasketTotalPrice,
 } from "@/entities/basket";
 import {useAppDispatch, useAppSelector} from "@/app/providers/StoreProvider";
 import {sizesSelector} from "@/widgets/ProductList";
 import {ErrorPage} from "@/widgets/ErrorPage";
 import {Loader} from "@/shared/ui/Loader";
+import {selectBasketDiscount, selectBasketTotalWithDiscount} from "@/entities/basket/model/selectors/basketSelector";
+import {selectAppliedPromo, selectPromoError} from "@/entities/promo/model/selectors/promoSelector";
+import {promoAction} from "@/entities/promo/model/slice/promoSlice";
 
 export const Basket = () => {
     const dispatch = useAppDispatch();
@@ -23,7 +26,13 @@ export const Basket = () => {
     const items = useAppSelector(selectBasketEnrichedItems);
     const totalCount = useAppSelector(selectBasketTotalCount);
     const totalPrice = useAppSelector(selectBasketTotalPrice);
+    const totalPriceWithDiscount = useAppSelector(selectBasketTotalWithDiscount);
+    const discount = useAppSelector(selectBasketDiscount);
+    const appliedPromo = useAppSelector(selectAppliedPromo);
+    const promoError = useAppSelector(selectPromoError);
     const sizes = useAppSelector(sizesSelector);
+
+    const [promoInput, setPromoInput] = useState('');
 
     const getSizeName = (id: number) => sizes.find((s) => s.id === id)?.name ?? String(id);
 
@@ -60,6 +69,32 @@ export const Basket = () => {
             size: item.size,
         }));
     };
+
+    const handleApplyPromo = () => {
+        if (promoInput.trim()) {
+            dispatch(promoAction.applyPromo(promoInput));
+        }
+    };
+
+    const handleRemovePromo = () => {
+        dispatch(promoAction.removePromo());
+        setPromoInput('');
+    };
+
+    const handlePromoInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPromoInput(e.target.value);
+        if (promoError) {
+            dispatch(promoAction.clearError());
+        }
+    };
+
+    const handlePromoKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            handleApplyPromo();
+        }
+    };
+
     if (isLoading) {
         return <div className={cls.load}><Loader/></div>;
     }
@@ -124,18 +159,16 @@ export const Basket = () => {
                                     <div className={cls.cardMeta}>
                                         Цвет: {item.colorName} · Размер: {getSizeName(item.size)}
                                     </div>
-                                    <div>
+                                    <div className={cls.cardQuantity}>
                                         {item.quantity} шт.
                                     </div>
                                     <div className={cls.cardPrice}>
                                         <span className={cls.priceCurrent}>
                                             {(item.price * item.quantity).toFixed(2)} ₽
-                                            </span>
-                                        <span className={cls.priceTotal}>
-                                               {item.price.toFixed(2)} р × {item.quantity} = {(item.price * item.quantity).toFixed(2)} р
                                         </span>
-
-
+                                        <span className={cls.priceTotal}>
+                                            {item.price.toFixed(2)} ₽ × {item.quantity} = {(item.price * item.quantity).toFixed(2)} ₽
+                                        </span>
                                     </div>
                                 </div>
 
@@ -188,14 +221,70 @@ export const Basket = () => {
                     </Link>
 
                     <div className={cls.summary}>
+                        {/* Поле промокода */}
+                        <div className={cls.promoSection}>
+                            {appliedPromo ? (
+                                <div className={cls.promoApplied}>
+                                    <div className={cls.promoInfo}>
+                                        <span className={cls.promoCode}>{appliedPromo.code}</span>
+                                        <span className={cls.promoDiscount}>
+                                            {appliedPromo.type === 'percent'
+                                                ? `-${appliedPromo.discount}%`
+                                                : `-${appliedPromo.discount} ₽`}
+                                        </span>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        className={cls.promoRemove}
+                                        onClick={handleRemovePromo}
+                                        aria-label="Удалить промокод"
+                                    >
+                                        Удалить
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className={cls.promoInput}>
+                                    <input
+                                        type="text"
+                                        placeholder="Промокод"
+                                        value={promoInput}
+                                        onChange={handlePromoInputChange}
+                                        onKeyDown={handlePromoKeyDown}
+                                        className={cls.promoField}
+                                    />
+                                    <button
+                                        type="button"
+                                        className={cls.promoApplyBtn}
+                                        onClick={handleApplyPromo}
+                                        disabled={!promoInput.trim()}
+                                    >
+                                        Применить
+                                    </button>
+                                </div>
+                            )}
+                            {promoError && <div className={cls.promoError}>{promoError}</div>}
+                        </div>
+
                         <div className={cls.summaryRow}>
                             <span>{totalCount} {pluralizeItems(totalCount)}</span>
                             <span className={cls.summaryValue}>{totalPrice.toFixed(2)} ₽</span>
                         </div>
+
+                        {/* Скидка */}
+                        {discount > 0 && (
+                            <div className={cls.summaryRow}>
+                                <span className={cls.discountLabel}>Скидка</span>
+                                <span className={cls.discountValue}>-{discount.toFixed(2)} ₽</span>
+                            </div>
+                        )}
+
                         <div className={cls.summaryDivider}/>
+
                         <div className={cls.summaryTotal}>
                             <span className={cls.summaryTotalLabel}>Итого</span>
-                            <span className={cls.summaryTotalValue}>{totalPrice.toFixed(2)} ₽</span>
+                            <span className={cls.summaryTotalValue}>
+                                {totalPriceWithDiscount.toFixed(2)} ₽
+                            </span>
                         </div>
                     </div>
                 </aside>

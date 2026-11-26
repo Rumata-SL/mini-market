@@ -1,0 +1,1 @@
+export type {PromoSchema} from "./model/types/promoSchema"
