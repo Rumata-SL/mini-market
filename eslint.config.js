@@ -7,12 +7,14 @@ import globals from 'globals';
 
 export default [
     js.configs.recommended,
+
+    // Блок для TS/TSX файлов (бизнес-код)
     {
         files: ['**/*.{ts,tsx}'],
         languageOptions: {
             parser: tsParser,
             parserOptions: {
-                ecmaFeatures: { jsx: true },
+                ecmaFeatures: {jsx: true},
                 ecmaVersion: 'latest',
                 sourceType: 'module',
             },
@@ -28,7 +30,7 @@ export default [
             'react-hooks': reactHooksPlugin,
         },
         settings: {
-            react: { version: 'detect' },
+            react: {version: 'detect'},
         },
         rules: {
             ...tsPlugin.configs.recommended.rules,
@@ -36,10 +38,21 @@ export default [
             ...reactHooksPlugin.configs.recommended.rules,
             'react/react-in-jsx-scope': 'off',
             '@typescript-eslint/explicit-module-boundary-types': 'off',
-            '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+            '@typescript-eslint/no-unused-vars': ['warn', {argsIgnorePattern: '^_'}],
         },
     },
+
+    // Блок для JS-конфигов (Node.js окружение)
     {
-        ignores: ['dist/**', 'node_modules/**', 'webpack.config.js'],
+        files: ['*.config.js', '*.config.cjs'],
+        languageOptions: {
+            globals: {
+                ...globals.node,
+            },
+        },
+    },
+
+    {
+        ignores: ['dist/**', 'node_modules/**'],
     },
 ];
