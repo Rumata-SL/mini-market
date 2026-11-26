@@ -1,0 +1,27 @@
+@forward "reset";
+@forward "global";
+
+
+body {
+  font: var(--font-m);
+  color: var(--primary-color);
+}
+
+.app {
+  font: var(--font-m);
+  background: var(--bg-color);
+  color: var(--primary-color);
+  min-height: 100vh;
+}
+
+.content-page {
+  display: flex;
+}
+
+.page-wrapper {
+  flex-grow: 1;
+  padding: 10px;
+  width: calc(100% - var(--sidebar-width));
+  height: calc(100vh - var(--navbar-height));
+  overflow-y: auto;
+}

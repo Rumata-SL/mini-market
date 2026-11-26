@@ -1,0 +1,56 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 6px 24px;
+  background: var(--inverted-primary-color);
+}
+
+.basketLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.15s;
+  padding: 3px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 9px;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.icon {
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.count {
+  position: absolute;
+  top: 4px;
+  right: 84px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background: #0fc4d5;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  white-space: nowrap;
+  margin: 0 8px;
+}
