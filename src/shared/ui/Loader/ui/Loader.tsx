@@ -1,5 +1,5 @@
-import cls from "./Loader.module.scss";
 import {ReactNode} from "react";
+import cls from "./Loader.module.scss";
 import {classNames} from "@/shared/lib/classNames/classNames";
 
 export interface LoaderProps {
@@ -9,7 +9,7 @@ export interface LoaderProps {
 
 export const Loader = ({className}: LoaderProps) => {
     return (
-        <div className={classNames(cls.Loader, {}, [className])}>
+        <div className={classNames(cls.loader, {}, [className])}>
         </div>
     );
 };

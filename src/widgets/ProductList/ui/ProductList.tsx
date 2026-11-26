@@ -7,6 +7,8 @@ import {getProductList, selectProductVariants} from "@/widgets/ProductList/model
 import {ProductFilters} from "@/widgets/ProductList/ui/ProductFilters";
 import {FiltersProducts} from "@/widgets/ProductList/model/types/productListSchema";
 import {applyFilters} from "@/widgets/ProductList/lib/filterProducts";
+import {ErrorPage} from "@/widgets/ErrorPage";
+import {Loader} from "@/shared/ui/Loader";
 
 export interface ProductListProps {
     className?: string;
@@ -41,10 +43,13 @@ export const ProductList = (props: ProductListProps) => {
 
 
     if (isLoading) {
-        return <div>Загрузка...</div>;
+        return <div className={cls.loader}><Loader/></div>;
     }
-    if (error) {
-        return <div>Ошибка: {error}</div>;
+
+    if (error || !flatList) {
+        return (
+            <ErrorPage/>
+        );
     }
 
     return (

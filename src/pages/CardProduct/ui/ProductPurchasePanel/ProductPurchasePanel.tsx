@@ -7,10 +7,8 @@ interface ProductPurchasePanelProps {
 
 export const ProductPurchasePanel = ({className,}: ProductPurchasePanelProps) => {
 
-
     return (
         <aside className={classNames(cls.panel, {}, [className])}>
-            ProductPurchasePanel
         </aside>
     );
 };

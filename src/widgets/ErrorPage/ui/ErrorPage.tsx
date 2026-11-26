@@ -1,4 +1,4 @@
-import cls from "./Errorpage.module.scss";
+import cls from "./ErrorPage.module.scss";
 import {ReactNode} from "react";
 import {classNames} from "@/shared/lib/classNames/classNames";
 
@@ -7,7 +7,7 @@ export interface ErrorPageProps {
     children?: ReactNode;
 }
 
-export const Errorpage = ({className}: ErrorPageProps) => {
+export const ErrorPage = ({className}: ErrorPageProps) => {
 
     const reloadPage = () => {
         location.reload();
@@ -15,7 +15,8 @@ export const Errorpage = ({className}: ErrorPageProps) => {
     return (
         <div className={classNames(cls.errorpage, {}, [className])}>
             <div>Произошла непредвиденная ошибка</div>
-            <button onClick={reloadPage}>Обновить страницу</button>
+            <div>Попробуйте обновить страницу</div>
+            <button className={cls.btn} onClick={reloadPage}>Обновить страницу</button>
         </div>
     );
 };

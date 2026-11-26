@@ -1,7 +1,7 @@
 import {Link, useParams, useSearchParams} from 'react-router-dom';
 import {ProductGallery} from './ProductGallery/ProductGallery';
 import {ProductInfo} from './ProductInfo/ProductInfo';
-import {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import cls from './CardProduct.module.scss';
 import {useAppDispatch, useAppSelector} from '@/app/providers/StoreProvider/config';
 import {AppRouter, RoutePath} from '@/shared/config/routeConfig/routeConfig';
@@ -9,6 +9,7 @@ import {cardProductSelector} from '@/pages/CardProduct/model/selectors/cardProdu
 import {fetchProductById} from '@/pages/CardProduct';
 import {ProductPurchasePanel} from '@/pages/CardProduct/ui/ProductPurchasePanel/ProductPurchasePanel';
 import {ProductColor} from "@/widgets/ProductList/model/types/productListSchema";
+import {Loader} from "@/shared/ui/Loader";
 
 export const CardProduct = () => {
     const {id} = useParams<{ id: string }>();
@@ -67,7 +68,7 @@ export const CardProduct = () => {
     }, [colorIndex, selectedSize, product, setSearchParams]);
 
     if (isLoading) {
-        return <div>Загрузка...</div>;
+        return <div className={cls.load}><Loader/></div>;
     }
 
     if (error || !product) {

@@ -14,6 +14,8 @@ import {
 } from "@/entities/basket";
 import {useAppDispatch, useAppSelector} from "@/app/providers/StoreProvider";
 import {sizesSelector} from "@/widgets/ProductList";
+import {ErrorPage} from "@/widgets/ErrorPage";
+import {Loader} from "@/shared/ui/Loader";
 
 export const Basket = () => {
     const dispatch = useAppDispatch();
@@ -59,10 +61,10 @@ export const Basket = () => {
         }));
     };
     if (isLoading) {
-        return <div>Загрузка...</div>;
+        return <div className={cls.load}><Loader/></div>;
     }
     if (error) {
-        return <div>Ошибка: {error}</div>;
+        return <ErrorPage>Ошибка: {error}</ErrorPage>;
     }
 
     if (items.length === 0) {
@@ -128,10 +130,9 @@ export const Basket = () => {
                                     <div className={cls.cardPrice}>
                                         <span className={cls.priceCurrent}>
                                             {(item.price * item.quantity).toFixed(2)} ₽
-                                            {/*{item.price.toFixed(2)} ₽*/}
-                                            {/*</span>*/}
-                                            {/*                    <span className={cls.priceTotal}>*/}
-                                            {/*    × {item.quantity} = {(item.price * item.quantity).toFixed(2)} ₽*/}
+                                            </span>
+                                        <span className={cls.priceTotal}>
+                                               {item.price.toFixed(2)} р × {item.quantity} = {(item.price * item.quantity).toFixed(2)} р
                                         </span>
 
 

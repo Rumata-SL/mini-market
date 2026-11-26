@@ -1,7 +1,7 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {ThunkConfig} from "@/app/providers/StoreProvider/config/StateSchema";
-import {getProducts} from "@/api/api";
 import {Product} from "@/widgets/ProductList";
+import {getProducts} from "@/api/api";
 
 export const fetchProductList = createAsyncThunk<Product[], string | undefined, ThunkConfig<string>>(
     "productList/fetchProductList",
@@ -9,6 +9,7 @@ export const fetchProductList = createAsyncThunk<Product[], string | undefined, 
         const {rejectWithValue} = thunkAPI;
         try {
             const response: Product[] = await getProducts();
+            // const response = null;
             if (!response) {
                 throw new Error();
             }

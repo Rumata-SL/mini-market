@@ -1,5 +1,6 @@
 .page {
   margin: 0 auto;
+  padding: 10px;
 }
 
 .pat {
@@ -364,4 +365,12 @@
     background: var(--inverted-secondary-color);
     cursor: not-allowed;
   }
+}
+
+.load {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
