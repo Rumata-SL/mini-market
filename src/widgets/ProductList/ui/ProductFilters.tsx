@@ -16,6 +16,10 @@ export const ProductFilters = ({filters, onChange, className}: ProductFiltersPro
         onChange({...filters, search: e.target.value});
     };
 
+    const handleClearSearch = () => {
+        onChange({...filters, search: ''});
+    };
+
     const handleInStock = (e: ChangeEvent<HTMLInputElement>) => {
         onChange({...filters, inStock: e.target.checked});
     };
@@ -27,13 +31,25 @@ export const ProductFilters = ({filters, onChange, className}: ProductFiltersPro
 
     return (
         <div className={classNames(cls.filters, {}, [className])}>
-            <input
-                type="text"
-                placeholder="Поиск по названию..."
-                value={filters.search}
-                onChange={handleSearch}
-                className={cls.search}
-            />
+            <div className={cls.searchWrapper}>
+                <input
+                    type="text"
+                    placeholder="Поиск по названию..."
+                    value={filters.search}
+                    onChange={handleSearch}
+                    className={cls.search}
+                />
+                {filters.search && (
+                    <button
+                        type="button"
+                        className={cls.clearBtn}
+                        onClick={handleClearSearch}
+                        aria-label="Очистить поиск"
+                    >
+                        ×
+                    </button>
+                )}
+            </div>
 
             <label className={cls.checkbox}>
                 <input
