@@ -21,6 +21,9 @@ export const Navbar = (props: NavbarProps) => {
 
     return (
         <div className={classNames(cls.navbar, {}, [className])}>
+            <Link className={cls.link} to={RoutePath[AppRouter.CATALOG_PAGE]}>
+                <h2>Mini-market</h2>
+            </Link>
             <Link
                 to={RoutePath[AppRouter.BASKET]}
                 className={cls.basketLink}

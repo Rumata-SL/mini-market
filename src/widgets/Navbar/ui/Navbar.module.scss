@@ -1,9 +1,14 @@
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 6px 24px;
   background: var(--inverted-primary-color);
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .basketLink {
