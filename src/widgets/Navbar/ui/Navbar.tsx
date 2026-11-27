@@ -5,7 +5,7 @@ import BasketIcon from '@/shared/assets/icons/BasketIcon.svg';
 import {Link} from 'react-router-dom';
 import {AppRouter, RoutePath} from '@/shared/config/routeConfig/routeConfig';
 import {useAppSelector} from '@/app/providers/StoreProvider/config';
-import {selectBasketTotalCount, selectBasketTotalWithDiscount,} from '@/entities/basket/model/selectors/basketSelector';
+import {selectBasketTotalCount, selectBasketTotalWithDiscount} from "@/entities/basket";
 
 export interface NavbarProps {
     className?: string;

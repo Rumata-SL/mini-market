@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {PromoSchema, PromoState} from "@/entities/promo/model/types/promoSchema";
+import type {PromoSchema, PromoState} from "../types/promoSchema";
 
 
 const initialState: PromoSchema = {

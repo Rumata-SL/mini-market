@@ -37,7 +37,7 @@
   padding: 0 6px;
   background: #0fc4d5;
   color: #fff;
-  font-size: 12px;
+  font-size: var(--size-ss);
   font-weight: 700;
   border-radius: 50%;
   display: flex;
@@ -48,7 +48,7 @@
 }
 
 .price {
-  font-size: 16px;
+  font-size: var(--size-m);
   font-weight: 700;
   color: #111827;
   white-space: nowrap;

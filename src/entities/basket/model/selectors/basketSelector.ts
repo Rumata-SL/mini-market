@@ -1,7 +1,7 @@
 import {createSelector} from '@reduxjs/toolkit';
 import {BasketItem} from "@/entities/basket";
 import {StateSchema} from "@/app/providers/StoreProvider";
-import {selectAppliedPromo} from "@/entities/promo/model/selectors/promoSelector";
+import {selectAppliedPromo} from "@/entities/promo";
 
 
 const selectBasketItems = (state: StateSchema) => state.basket.items;

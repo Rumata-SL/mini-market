@@ -4,25 +4,24 @@ import {Link} from 'react-router-dom';
 import cls from './Basket.module.scss';
 
 import {AppRouter, RoutePath} from "@/shared/config/routeConfig/routeConfig";
-import {pluralizeItems} from "@/entities/basket/model/lib/pluralizeItems";
-import {getProductList} from "@/widgets/ProductList/model/selectors/productListSelectors";
 import {
     basketActions,
+    pluralizeItems,
+    selectBasketDiscount,
     selectBasketEnrichedItems,
     selectBasketTotalCount,
     selectBasketTotalPrice,
+    selectBasketTotalWithDiscount,
 } from "@/entities/basket";
 import {useAppDispatch, useAppSelector} from "@/app/providers/StoreProvider";
-import {sizesSelector} from "@/widgets/ProductList";
+import {productListSelector, sizesSelector} from "@/widgets/ProductList";
 import {ErrorPage} from "@/widgets/ErrorPage";
 import {Loader} from "@/shared/ui/Loader";
-import {selectBasketDiscount, selectBasketTotalWithDiscount} from "@/entities/basket/model/selectors/basketSelector";
-import {selectAppliedPromo, selectPromoError} from "@/entities/promo/model/selectors/promoSelector";
-import {promoAction} from "@/entities/promo/model/slice/promoSlice";
+import {promoAction, selectAppliedPromo, selectPromoError} from "@/entities/promo";
 
 export const Basket = () => {
     const dispatch = useAppDispatch();
-    const {isLoading, error} = useAppSelector(getProductList);
+    const {isLoading, error} = useAppSelector(productListSelector);
     const items = useAppSelector(selectBasketEnrichedItems);
     const totalCount = useAppSelector(selectBasketTotalCount);
     const totalPrice = useAppSelector(selectBasketTotalPrice);

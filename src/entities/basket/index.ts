@@ -3,6 +3,10 @@ export type {BasketItem, BasketSchema} from './model/types/basketSchema';
 export {
     selectBasketEnrichedItems,
     selectBasketTotalCount,
-    selectBasketTotalPrice
+    selectBasketTotalPrice,
+    selectBasketDiscount,
+    selectBasketTotalWithDiscount,
+    selectIsItemInBasket
 } from "./model/selectors/basketSelector";
-export {Basket} from "./ui/Basket"
+export {Basket} from "./ui/Basket";
+export {pluralizeItems} from "./model/lib/pluralizeItems";

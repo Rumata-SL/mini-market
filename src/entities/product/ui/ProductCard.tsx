@@ -3,8 +3,7 @@ import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './ProductCard.module.scss';
 import {Link} from "react-router-dom";
 import {AppRouter, RoutePath} from "@/shared/config/routeConfig/routeConfig";
-import {ProductVariant, sizesSelector} from "@/widgets/ProductList";
-import {resolveSizes} from "@/widgets/ProductList/lib/resolveSizes";
+import {ProductVariant, resolveSizes, sizesSelector} from "@/widgets/ProductList";
 import {useAppSelector} from "@/app/providers/StoreProvider";
 
 interface ProductCardProps {

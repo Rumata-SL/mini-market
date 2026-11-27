@@ -3,7 +3,7 @@ import {classNames} from "@/shared/lib/classNames/classNames";
 import cls from "./ProductList.module.scss"
 import {ProductCard} from "@/entities/product";
 import {useAppSelector} from "@/app/providers/StoreProvider/config";
-import {getProductList, selectProductVariants} from "@/widgets/ProductList/model/selectors/productListSelectors";
+import {productListSelector, selectProductVariants} from "@/widgets/ProductList/model/selectors/productListSelectors";
 import {ProductFilters} from "@/widgets/ProductList/ui/ProductFilters";
 import {FiltersProducts} from "@/widgets/ProductList/model/types/productListSchema";
 import {applyFilters} from "@/widgets/ProductList/lib/filterProducts";
@@ -23,7 +23,7 @@ const initialFilters: FiltersProducts = {
 
 export const ProductList = (props: ProductListProps) => {
     const {className} = props;
-    const {isLoading, error} = useAppSelector(getProductList);
+    const {isLoading, error} = useAppSelector(productListSelector);
     const flatList = useAppSelector(selectProductVariants);
     const [filters, setFilters] = useState<FiltersProducts>(initialFilters);
 

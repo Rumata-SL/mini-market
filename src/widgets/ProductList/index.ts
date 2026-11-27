@@ -8,3 +8,4 @@ export type {
 } from "./model/types/productListSchema";
 export {resolveSizes} from "./lib/resolveSizes";
 export {sizesSelector} from "./model/selectors/sizesSelector";
+export {productListSelector, selectProductVariants} from "./model/selectors/productListSelectors";

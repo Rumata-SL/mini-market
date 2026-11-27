@@ -1,9 +1,8 @@
 import {useEffect, useMemo} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {addToCart} from '@/entities/basket';
+import {addToCart, selectIsItemInBasket} from '@/entities/basket';
 import {classNames} from '@/shared/lib/classNames/classNames';
 import cls from './ProductInfo.module.scss';
-import {selectIsItemInBasket} from '@/entities/basket/model/selectors/basketSelector';
 import {AppRouter, RoutePath} from '@/shared/config/routeConfig/routeConfig';
 import {Product, resolveSizes, sizesSelector} from "@/widgets/ProductList";
 import {StateSchema, useAppDispatch, useAppSelector} from "@/app/providers/StoreProvider";

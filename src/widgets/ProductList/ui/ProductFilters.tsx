@@ -1,5 +1,5 @@
 import {classNames} from '@/shared/lib/classNames/classNames';
-import type {FiltersProducts, SortOrder} from '@/widgets/ProductList/model/types/productListSchema';
+import type {FiltersProducts, SortOrder} from '../model/types/productListSchema';
 import cls from './ProductFilters.module.scss';
 import {ChangeEvent} from "react";
 import ChevronDownIcon from '@/shared/assets/icons/chevron-down.svg';

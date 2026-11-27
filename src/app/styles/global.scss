@@ -12,10 +12,16 @@
   --font-size-xl: 32px;
   --font-line-xl: 40px;
   --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+
   --size-s: 10px;
+  --size-ss: 12px;
+  --size-sm: 14px;
   --size-m: 16px;
   --size-l: 24px;
   --size-xl: 32px;
+
+
+  --navbar-height: 60px;
 
   --bg-color: #e8e9e2;
   --dark-color: #141e2b;
@@ -23,15 +29,8 @@
   --secondary-color: #405b72;
   --inverted-primary-color: #71899b;
   --inverted-secondary-color: #b2c1c5;
-
-  --navbar-height: 60px;
-  --sidebar-width: 300px;
-  --sidebar-width-collapsed: 80px;
-
-
-  //  Цвета
-
   --oveerlay-color: rgba(0 0 0 / 60%);
   --red-light: #d20505;
   --red-dark: #a20505;
+  --green-primary: #16a34a;
 }

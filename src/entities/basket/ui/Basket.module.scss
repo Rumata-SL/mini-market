@@ -5,7 +5,7 @@
 
 .pat {
   margin-bottom: 16px;
-  font-size: 14px;
+  font-size: var(--size-sm);
   color: var(--inverted-primary-color);
   display: flex;
   align-items: center;
@@ -32,7 +32,7 @@
 }
 
 .title {
-  font-size: 32px;
+  font-size: var(--size-xl);
   font-weight: 700;
   margin: 0;
 }
@@ -44,7 +44,7 @@
 }
 
 .itemsCount {
-  font-size: 15px;
+  font-size: var(--size-m);
   color: #374151;
   font-weight: 500;
 }
@@ -55,7 +55,7 @@
   background: none;
   color: #007bff;
   cursor: pointer;
-  font-size: 14px;
+  font-size: var(--size-sm);
 
   &:hover {
     text-decoration: underline;
@@ -126,7 +126,7 @@
 }
 
 .cardName {
-  font-size: 16px;
+  font-size: var(--size-m);
   font-weight: 600;
   color: #111827;
   line-height: 1.3;
@@ -148,7 +148,7 @@
 }
 
 .cardName {
-  font-size: 16px;
+  font-size: var(--size-m);;
   font-weight: 600;
   color: #111827;
   line-height: 1.3;
@@ -225,7 +225,7 @@
 .qtyValue {
   min-width: 36px;
   text-align: center;
-  font-size: 14px;
+  font-size: var(--size-sm);
   font-weight: 600;
   color: #111827;
 }
@@ -266,7 +266,7 @@
   text-align: center;
   text-decoration: none;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: var(--size-m);;
   font-weight: 600;
   transition: filter 0.15s, transform 0.1s;
 
@@ -330,13 +330,13 @@
 }
 
 .emptyTitle {
-  font-size: 32px;
+  font-size: var(--size-xl);
   font-weight: 700;
   margin: 0 0 16px;
 }
 
 .emptyText {
-  font-size: 16px;
+  font-size: var(--size-m);;
   color: #6b7280;
   margin: 0 0 24px;
 }
@@ -390,7 +390,7 @@
   padding: 10px 12px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: var(--size-sm);
   background: #fff;
   color: #111827;
 
@@ -410,7 +410,7 @@
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: var(--size-sm);
   font-weight: 500;
   cursor: pointer;
   transition: opacity 0.15s;
@@ -442,13 +442,13 @@
 }
 
 .promoCode {
-  font-size: 14px;
+  font-size: var(--size-sm);
   font-weight: 600;
   color: #166534;
 }
 
 .promoDiscount {
-  font-size: 12px;
+  font-size: var(--size-ss);
   color: #16a34a;
 }
 
@@ -456,7 +456,7 @@
   padding: 4px 8px;
   background: none;
   border: none;
-  color: #dc2626;
+  color: var(--red-light);
   cursor: pointer;
   font-size: 13px;
 
@@ -471,16 +471,16 @@
   background: #fef2f2;
   border: 1px solid #fecaca;
   border-radius: 8px;
-  color: #dc2626;
+  color: var(--red-light);
   font-size: 13px;
 }
 
 .discountLabel {
-  color: #16a34a;
+  color: var(--green-primary);
 }
 
 .discountValue {
-  color: #16a34a;
+  color: var(--green-primary);
   font-weight: 600;
 }
 

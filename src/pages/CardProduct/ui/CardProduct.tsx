@@ -5,11 +5,11 @@ import React, {useEffect, useRef, useState} from 'react';
 import cls from './CardProduct.module.scss';
 import {useAppDispatch, useAppSelector} from '@/app/providers/StoreProvider/config';
 import {AppRouter, RoutePath} from '@/shared/config/routeConfig/routeConfig';
-import {cardProductSelector} from '@/pages/CardProduct/model/selectors/cardProductSelector';
+import {cardProductSelector} from '../model/selectors/cardProductSelector';
 import {fetchProductById} from '@/pages/CardProduct';
-import {ProductPurchasePanel} from '@/pages/CardProduct/ui/ProductPurchasePanel/ProductPurchasePanel';
-import {ProductColor} from "@/widgets/ProductList/model/types/productListSchema";
+import {ProductPurchasePanel} from '../ui/ProductPurchasePanel/ProductPurchasePanel';
 import {Loader} from "@/shared/ui/Loader";
+import {ProductColor} from "@/widgets/ProductList";
 
 export const CardProduct = () => {
     const {id} = useParams<{ id: string }>();

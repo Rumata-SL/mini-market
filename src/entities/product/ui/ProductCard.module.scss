@@ -32,14 +32,14 @@
 }
 
 .brand {
-  font-size: 12px;
+  font-size: var(--size-ss);
   color: #6b7280;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .name {
-  font-size: 16px;
+  font-size: var(--size-m);;
   font-weight: 600;
   margin: 0;
 }
@@ -75,7 +75,7 @@
 }
 
 .sizes {
-  font-size: 12px;
+  font-size: var(--size-ss);
   color: #6b7280;
 }
 
